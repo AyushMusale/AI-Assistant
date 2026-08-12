@@ -1,7 +1,7 @@
 import json
 import os
 
-MEMORY_FILE = "memory.json"
+MEMORY_FILE = os.path.join(os.path.dirname(__file__), "memory.json")
 
 
 def load_memory():

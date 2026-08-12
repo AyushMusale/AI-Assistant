@@ -1,32 +1,20 @@
-from webmanager import openWeb
-from appmanager import openApp
-from gemini import getResposne
+from Agent.gemini import getResposne
 from local_router import local_router
-from memory import memory
+from memory.memory import memory
+from memory.cache import cache
+
+from Agent.action_manager import actionManager
 
 if __name__ == "__main__":
 
     active = True
 
     while active:
-        userInput = input("How can i help you: ")
+        userInput = input("How can I help you: ")
 
-        result = local_router(userInput, memory)
-        if result:
-            if result["memory"]["type"] == "app":
-                openApp(result["target"])
+        result = local_router(userInput, memory, cache) 
+        print(result)
+        if result is None:
+            result = getResposne(userInput)
 
-            elif result["memory"]["type"] == "website":
-                openWeb(result["target"], result["memory"]["value"])
-
-        else:
-            data = getResposne(userInput)
-
-            if data["process"] == "website":
-                openWeb(data["name"], data["value"])
-
-            elif data["process"] == "app":
-                openApp(data["value"])
-
-            elif data["process"] == "chat":
-                print(data["value"])
+        actionManager(result)

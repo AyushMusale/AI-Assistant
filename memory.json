@@ -1,18 +1,6 @@
 {
     "brave": {
-        "type": "app",
+        "action": "open_app",
         "value": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
-    },
-    "discord": {
-        "type": "app",
-        "value": "C:\\Users\\Ayush\\AppData\\Local\\Discord\\app-1.0.9251\\Discord.exe"
-    },
-    "alltracker":{
-        "type":"website",
-        "value":"https://alltracker.online"
-    },
-    "github":{
-        "type":"website",
-        "value":"https://github.com"
     }
 }

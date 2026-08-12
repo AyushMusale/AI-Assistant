@@ -1,6 +1,6 @@
 import subprocess
 import os
-from memory import memory, save_memory, load_memory
+from memory.memory import memory, save_memory
 
 
 def find_app(app_name):
@@ -28,7 +28,7 @@ def find_app(app_name):
                     path = os.path.join(root, file)
 
                     memory[app_name.lower()] = {
-                        "type": "app",
+                        "action": "open_app",
                         "value": path,
                     }
                     save_memory(memory)
@@ -39,6 +39,8 @@ def find_app(app_name):
 
 
 def openApp(name):
+
+    print("opening...")
 
     name = name.lower().strip()
     if name in memory:
